@@ -1,0 +1,38 @@
+#***************************** C and FORTRAN *************************** 
+#                                              
+#       Define C and Fortran compilers and compile options.
+#
+
+CFLAGS = -O -Wall -pthread
+FFLAGS = -O -pthread
+
+#
+#	Set paths for C and Fortran compilers. 	
+#
+
+CF_PATH = /opt/local/bin/
+CC =  ${CF_PATH}gcc ${CFLAGS}
+F90 = ${CF_PATH}gfortran ${FFLAGS}
+
+#
+#*********************************************************************** 
+#
+#       The rest of the Makefile is independent of environment
+#
+
+
+HB = atest.o solver.o driver.o webgui.o
+
+.f.o:
+	${F90}  -c $< -o $@
+
+.c.o:
+	${CC}  -c $< -o $@
+
+Hb: ${HB}
+	${F90} ${HB}  -o Hb
+
+${HB} : mg0.o
+
+clean:
+	rm -f *.o fort.* core* *.mod journl*.jnl* *.out jnltmp*.jnl* Hb*

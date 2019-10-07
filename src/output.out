@@ -1,0 +1,30 @@
+ 
+command:F                                                                       
+ 
+command:d=1.0e-8                                                                
+command error                                                                   
+ 
+command:fd=1e-8                                                                 
+mginit error -1                                                                 
+ 
+command:Fd=1e-8                                                                 
+ 
+command:S                                                                       
+ 
+command:L                                                                       
+ 
+command:l../matrix/mtx001                                                       
+command error                                                                   
+ 
+command:R                                                                       
+ 
+command:r../matrix/mtx001                                                       
+mtx001         n =  2601    ispd = 1                                            
+ 
+command:f                                                                       
+mtx001         dtol: 0.100E-07  maxlvl: 20  lvl: 6  maxfil:    20  ncfact: 4    
+ 
+command:s                                                                       
+mtx001         digits:12.17   iter:  1   init: 0.200E-01   solve: 0.400E-02     
+ 
+command:q                                                                       

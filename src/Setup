@@ -1,0 +1,15 @@
+#! /bin/sh
+if [ "$1" = "ubuntu" ]; then
+    cat config/Makefile_header.ubuntu config/Makefile_body > Makefile
+elif [ "$1" = "osx" ]; then
+    cat config/Makefile_header.osx config/Makefile_body > Makefile
+elif [ "$1" = "dbug" ]; then
+    cat config/Makefile_header.dbug config/Makefile_body > Makefile
+elif [ "$1" = "rocks" ]; then
+    cat config/Makefile_header.rocks config/Makefile_body > Makefile
+elif [ "$1" = "openmpi" ]; then
+    cat config/Makefile_header.openmpi config/Makefile_body > Makefile
+else
+    cat config/Makefile_header.generic config/Makefile_body > Makefile
+fi
+

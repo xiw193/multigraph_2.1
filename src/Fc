@@ -1,0 +1,47 @@
+#!/bin/sh
+
+FILE=$1
+
+cp ${FILE}.f big
+
+sed -e s/"(kind=iknd)"/""/g big > big0
+sed -e s/"(kind=rknd)"/""/g big0 > big
+sed -e s/"_rknd"/""/g big > big0
+sed -e s/"_rknd"/""/g big0 > big
+sed -e s/"_rknd"/""/g big > big0
+sed -e s/"_rknd"/""/g big0 > big
+sed -e s/",rknd)"/")"/g big > big0
+sed -e s/",rknd)"/")"/g big0 > big
+sed -e s/"_iknd"/""/g big > big0
+sed -e s/"_iknd"/""/g big0 > big
+sed -e s/"_iknd"/""/g big > big0
+sed -e s/"_iknd"/""/g big0 > big
+sed -e s/",iknd)"/")"/g big > big0
+sed -e s/",iknd)"/")"/g big0 > big
+sed -e s/"            use mthdef"/"c           use mthdef"/g big > big0
+sed -e s/"            flush"/"c           flush"/g big0 > big
+sed -e s/"        flush"/"c       flush"/g big > big0
+sed -e s/"(kind=isngl)"/""/g big0 > big
+sed -e s/"(kind=rsngl)"/""/g big > big0
+sed -e s/"(kind=rdble)"/""/g big0 > big 
+sed -e s/",isngl)"/")"/g big > big0
+sed -e s/",idble)"/")"/g big0 > big 
+sed -e s/",rsngl)"/")"/g big > big0
+sed -e s/",rdble)"/")"/g big0 > big 
+sed -e s/"_isngl,"/","/g big > big0
+sed -e s/"_idble,"/","/g big0 > big 
+sed -e s/"_rsngl,"/","/g big > big0
+sed -e s/"_rdble,"/","/g big0 > big 
+
+mv big ${FILE}0.f
+rm big0
+
+
+ftnchek -array=no-dimensions,no-size -noextern \
+ -usage=no-arg-array-alias,no-do-index-modified \
+ -truncation=all,no-significant-figures \
+${FILE}0.f > ftn.out
+
+rm ${FILE}0.f
+
+

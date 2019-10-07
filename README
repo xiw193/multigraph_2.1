@@ -1,0 +1,81 @@
+--------------------------------------------------------------------------------
+                                    Manifest
+
+This directory contains the following:
+
+1. README                         this file
+2. COPYRIGHT_NOTICE               the copyright notice file
+3. src (directory)                source code
+4. journal_files (directory)      journal files for use with example problems
+5. matrix (directory)             sample matrix files
+6. guide.pdf                      documentation
+                      
+--------------------------------------------------------------------------------
+                                  Installation
+
+The directory src contains the following files:
+
+ 1. mg0.f                           module that sets precision
+ 2. solver.f                        the solver routines
+ 3. driver.f                        graphics and driver routines
+ 4. webgui.c                        web browser interface
+ 5. atest.f                         main driver program
+ 6. Makefile                        a simple generic makefile
+ 7. Makefile_osx                    an example makefile for OS X  
+
+You can set the precision in the module mthdef in the file mg0.f. This
+module is machine dependent, but should work as provided in most
+environments. Set the integer arithmetic to single or
+double precision as desired; the default is single precision.
+Floating point can be single, double, or quadruple precision;
+the default is double precision.
+
+If you want to incorporate the solver into your own environment,
+just compile and link the files mg0.f and solver.f with your existing 
+application, and call the appropriate subroutines as described in the 
+documentation.
+
+If you want to use the included test driver, your environment
+must include both Fortran90 and C compilers. To make an executable, 
+you must compile mg0.f, solver.f, driver.f, webgui.c and atest.f.
+A generic Makefile is provided (along with a sample Makefile for OS X). 
+To use the Makefile, specify paths for the compilers  and set
+compiler flags as necessary.
+
+--------------------------------------------------------------------------------
+                                  Documentation
+
+Complete documentation is provided in the PDF file guide.pdf.
+
+--------------------------------------------------------------------------------
+                                    Thanks
+
+This version of MULTIGRAPH was supported by the National Science Foundation
+through aawards DMS-1318480 and DMS1345013 (University of California at 
+San Diego).
+
+--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
